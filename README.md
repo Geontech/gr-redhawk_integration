@@ -13,8 +13,8 @@ This package is based on a mix of the original `gr-redhawk_integration_python` a
 
 The supported framework versions at this time are:
 
- 1. REDHAWK SDR 2.2.0
- 2. GNURadio 3.7.12.0
+ 1. REDHAWK SDR 2.2.1
+ 2. GNURadio 3.7.13
 
 ## Installation
 
