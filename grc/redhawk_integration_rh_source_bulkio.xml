@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<block>
+  <name>BULKIO Source</name>
+  <key>redhawk_integration_rh_source_bulkio</key>
+  <category>[REDHAWK SDR]</category>
+  <import>import redhawk_integration</import>
+  <make>redhawk_integration.rh_source_bulkio_$(type.fcn)()</make>
+  <!-- Make one 'param' node for every Parameter you want settable from the GUI.
+       Sub-nodes:
+       * name
+       * key (makes the value accessible as $keyname, e.g. in the make node)
+       * type -->
+  <param>
+    <name>Input Type</name>
+    <key>type</key>
+    <type>enum</type>
+    <option>
+      <name>Complex</name>
+      <key>complex</key>
+      <opt>fcn:c</opt>
+    </option>
+    <option>
+      <name>Float</name>
+      <key>float</key>
+      <opt>fcn:f</opt>
+    </option>
+    <option>
+      <name>Int</name>
+      <key>int</key>
+      <opt>fcn:i</opt>
+    </option>
+    <option>
+      <name>Short</name>
+      <key>short</key>
+      <opt>fcn:s</opt>
+    </option>
+    <option>
+      <name>Byte</name>
+      <key>byte</key>
+      <opt>fcn:b</opt>
+    </option>
+  </param>
+
+  <!-- Make one 'source' node per input. Sub-nodes:
+       * name (an identifier for the GUI)
+       * type
+       * vlen
+       * optional (set to 1 for optional inputs) -->
+  <source>
+    <name>out</name>
+    <type>$type</type>
+    <nports>1</nports>
+  </source>
+</block>

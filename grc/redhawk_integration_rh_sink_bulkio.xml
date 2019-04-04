@@ -1,0 +1,211 @@
+<?xml version="1.0"?>
+<block>
+  <name>BULKIO Sink</name>
+  <key>redhawk_integration_rh_sink_bulkio</key>
+  <category>[REDHAWK SDR]</category>
+  <import>import redhawk_integration</import>
+  <make>redhawk_integration.rh_sink_bulkio_$(type.fcn)($sri_streamID, $sri_xunits, $sri_xdelta, $sri_yunits, $sri_ydelta, $sri_subsize)</make>
+  <!-- Make one 'param' node for every Parameter you want settable from the GUI.
+       Sub-nodes:
+       * name
+       * key (makes the value accessible as $keyname, e.g. in the make node)
+       * type -->
+  <param>
+    <name>Input Type</name>
+    <key>type</key>
+    <type>enum</type>
+    <option>
+      <name>Complex</name>
+      <key>complex</key>
+      <opt>fcn:c</opt>
+    </option>
+    <option>
+      <name>Float</name>
+      <key>float</key>
+      <opt>fcn:f</opt>
+    </option>
+    <option>
+      <name>Int</name>
+      <key>int</key>
+      <opt>fcn:i</opt>
+    </option>
+    <option>
+      <name>Short</name>
+      <key>short</key>
+      <opt>fcn:s</opt>
+    </option>
+    <option>
+      <name>Byte</name>
+      <key>byte</key>
+      <opt>fcn:b</opt>
+    </option>
+  </param>
+
+  <!-- Signal Related Information -->
+    <param>
+    <name>Stream ID</name>
+    <key>sri_streamID</key>
+    <value>"gnuradio_flowgraph"</value>
+    <type>string</type>
+  </param>
+
+  <!-- See REDHAWK ICD 2.1 section 3.1.1.2.5 -->
+  <param>
+    <name>X Units</name>
+    <key>sri_xunits</key>
+    <value>1</value>
+    <type>enum</type>
+    <option>
+      <name>N/A</name>
+      <key>0</key>
+    </option>
+    <option>
+      <name>Time (seconds)</name>
+      <key>1</key>
+    </option>
+    <option>
+      <name>Delay (seconds)</name>
+      <key>2</key>
+    </option>
+    <option>
+      <name>Frequency (Hz)</name>
+      <key>3</key>
+    </option>
+    <option>
+      <name>Time code format</name>
+      <key>4</key>
+    </option>
+    <option>
+      <name>Distance (m)</name>
+      <key>5</key>
+    </option>
+    <option>
+      <name>Velocity (m/s)</name>
+      <key>6</key>
+    </option>
+    <option>
+      <name>Acceleration (m/sec^2)</name>
+      <key>7</key>
+    </option>
+    <option>
+      <name>Jerk (m/sec^3)</name>
+      <key>8</key>
+    </option>
+    <option>
+      <name>Doppler (Hz)</name>
+      <key>9</key>
+    </option>
+    <option>
+      <name>Doppler Rate (Hz/sec)</name>
+      <key>10</key>
+    </option>
+    <option>
+      <name>Energy (J)</name>
+      <key>11</key>
+    </option>
+    <option>
+      <name>Power (W)</name>
+      <key>12</key>
+    </option>
+    <option>
+      <name>Mass (g)</name>
+      <key>13</key>
+    </option>
+  </param>
+
+  <param>
+    <name>X Delta</name>
+    <key>sri_xdelta</key>
+    <value>1.0/samp_rate</value>
+    <type>float</type>
+  </param>
+
+  <!-- See REDHAWK ICD 2.1 section 3.1.1.2.5 -->
+  <param>
+    <name>Y Units</name>
+    <key>sri_yunits</key>
+    <value>0</value>
+    <type>enum</type>
+    <option>
+      <name>N/A</name>
+      <key>0</key>
+    </option>
+    <option>
+      <name>Time (seconds)</name>
+      <key>1</key>
+    </option>
+    <option>
+      <name>Delay (seconds)</name>
+      <key>2</key>
+    </option>
+    <option>
+      <name>Frequency (Hz)</name>
+      <key>3</key>
+    </option>
+    <option>
+      <name>Time code format</name>
+      <key>4</key>
+    </option>
+    <option>
+      <name>Distance (m)</name>
+      <key>5</key>
+    </option>
+    <option>
+      <name>Velocity (m/s)</name>
+      <key>6</key>
+    </option>
+    <option>
+      <name>Acceleration (m/sec^2)</name>
+      <key>7</key>
+    </option>
+    <option>
+      <name>Jerk (m/sec^3)</name>
+      <key>8</key>
+    </option>
+    <option>
+      <name>Doppler (Hz)</name>
+      <key>9</key>
+    </option>
+    <option>
+      <name>Doppler Rate (Hz/sec)</name>
+      <key>10</key>
+    </option>
+    <option>
+      <name>Energy (J)</name>
+      <key>11</key>
+    </option>
+    <option>
+      <name>Power (W)</name>
+      <key>12</key>
+    </option>
+    <option>
+      <name>Mass (g)</name>
+      <key>13</key>
+    </option>
+  </param>
+
+  <param>
+    <name>Y Delta</name>
+    <key>sri_ydelta</key>
+    <value>1.0</value>
+    <type>float</type>
+  </param>
+
+  <param>
+    <name>Subsize</name>
+    <key>sri_subsize</key>
+    <value>0</value>
+    <type>int</type>
+  </param>
+
+  <!-- Make one 'sink' node per input. Sub-nodes:
+       * name (an identifier for the GUI)
+       * type
+       * vlen
+       * optional (set to 1 for optional inputs) -->
+  <sink>
+    <name>in</name>
+    <type>$type</type>
+    <nports>1</nports>
+  </sink>
+</block>

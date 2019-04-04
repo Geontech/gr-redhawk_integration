@@ -1,0 +1,11 @@
+This is the redhawk_integration-write-a-block package meant as a guide to building
+out-of-tree packages. To use the redhawk_integration blocks, the Python namespaces
+is in 'redhawk_integration', which is imported as:
+
+    import redhawk_integration
+
+See the Doxygen documentation for details about the blocks available
+in this package. A quick listing of the details can be found in Python
+after importing by using:
+
+    help(redhawk_integration)
